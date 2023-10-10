@@ -1,6 +1,7 @@
 package secp256k1
 
 /*
+#define EXHAUSTIVE_TEST_ORDER 13
 #cgo CFLAGS: -I${SRCDIR}/secp256k1-zkp -I${SRCDIR}/secp256k1-zkp/src
 
 #define ENABLE_MODULE_ECDH 1
