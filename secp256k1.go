@@ -1,8 +1,7 @@
 package secp256k1
 
 /*
-#define USE_BASIC_CONFIG 1
-#include "./secp256k1-zkp/src/basic-config.h"
+#cgo CFLAGS: -I${SRCDIR}/secp256k1-zkp -I${SRCDIR}/secp256k1-zkp/src
 
 #define ENABLE_MODULE_ECDH 1
 #define ENABLE_MODULE_GENERATOR 1
@@ -11,7 +10,6 @@ package secp256k1
 
 #include "secp256k1-zkp/src/secp256k1.c"
 
-#cgo CFLAGS: -I${SRCDIR}/secp256k1-zkp -I${SRCDIR}/secp256k1-zkp/src
 */
 import "C"
 import (
