@@ -148,7 +148,7 @@ func EcPrivKeyTweakAdd(ctx *Context, seckey []byte, tweak []byte) (int, error) {
 		return 0, errors.New(ErrorPrivateKeySize)
 	}
 
-	result := int(C.secp256k1_ec_privkey_tweak_add(ctx.ctx, (*C.uchar)(unsafe.Pointer(&seckey[0])), cBuf(tweak[:])))
+	result := int(C.secp256k1_ec_seckey_tweak_add(ctx.ctx, (*C.uchar)(unsafe.Pointer(&seckey[0])), cBuf(tweak[:])))
 	if result != 1 {
 		return result, errors.New(ErrorTweakingPrivateKey)
 	}
@@ -169,7 +169,7 @@ func EcPrivKeyNegate(ctx *Context, seckey []byte) (int, error) {
 		return 0, errors.New(ErrorPrivateKeySize)
 	}
 
-	result := int(C.secp256k1_ec_privkey_negate(ctx.ctx, (*C.uchar)(unsafe.Pointer(&seckey[0]))))
+	result := int(C.secp256k1_ec_seckey_negate(ctx.ctx, (*C.uchar)(unsafe.Pointer(&seckey[0]))))
 	return result, nil
 }
 
@@ -208,9 +208,10 @@ func EcPrivKeyTweakMul(ctx *Context, seckey []byte, tweak []byte) (int, error) {
 		return 0, errors.New(ErrorPrivateKeySize)
 	}
 
-	result := int(C.secp256k1_ec_privkey_tweak_mul(ctx.ctx, (*C.uchar)(unsafe.Pointer(&seckey[0])), cBuf(tweak[:])))
+	result := int(C.secp256k1_ec_seckey_tweak_mul(ctx.ctx, (*C.uchar)(unsafe.Pointer(&seckey[0])), cBuf(tweak[:])))
 	if result != 1 {
 		return result, errors.New(ErrorTweakingPrivateKey)
 	}
 	return result, nil
 }
+
